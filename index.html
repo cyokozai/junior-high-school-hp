@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市立郡山学園牧中学校 | 公式ホームページ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 基本設定 */
+        :root {
+            --primary-color: #00529B; /* スクールカラー（紺） */
+            --accent-color: #63c5da;  /* アクセント（水色） */
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #fff;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .header-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .logo p {
+            font-size: 12px;
+            margin: 0;
+            color: #666;
+        }
+
+        /* ナビゲーション */
+        nav {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .nav-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-list li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-list a {
+            display: block;
+            padding: 15px 0;
+            color: #fff;
+            font-weight: bold;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .nav-list li:first-child a {
+            border-left: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-list a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* メインビジュアル（画像差し替え箇所） */
+        .hero {
+            height: 450px;
+            background-color: #ddd;
+            /* ここに学校の校舎らしい写真のURLを指定しています */
+            background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 60%; /* 画像の少し下の方を表示 */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        /* 画像の上に薄い黒いフィルターをかけて文字を見やすくする */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 82, 155, 0.3); /* スクールカラーを薄く重ねる */
+        }
+
+        .hero-text {
+            position: relative; /* フィルターより上に出す */
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 35px 60px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .hero-text h2 {
+            margin: 0;
+            font-size: 36px;
+            color: var(--primary-color);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text p {
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* コンテンツエリア */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* メイン2:サイド1 */
+            gap: 30px;
+        }
+
+        /* セクション共通 */
+        .section-title {
+            border-left: 6px solid var(--primary-color);
+            padding-left: 15px;
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        /* お知らせリスト */
+        .news-list li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+
+        .news-date {
+            font-weight: bold;
+            color: #666;
+            margin-right: 15px;
+            min-width: 90px;
+        }
+
+        .news-cat {
+            background-color: var(--accent-color);
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 2px;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        /* 校長挨拶エリア */
+        .principal-msg {
+            display: flex;
+            gap: 25px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        /* 校長先生の写真スタイル */
+        .principal-img {
+            width: 140px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0; /* 写真が潰れないようにする */
+        }
+        
+        .principal-msg h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* サイドバーメニュー */
+        .sidebar-menu a {
+            display: block;
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-left-color: #003d73;
+        }
+
+        /* 緊急連絡掲示板 */
+        .emergency-box {
+            background-color: #fff0f0;
+            border: 2px solid #ffcccc;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .emergency-title {
+            color: #d32f2f;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .footer-info h3 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .footer-info p {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .footer-links ul {
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            font-size: 14px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* レスポンシブ対応（スマホ） */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 1カラムにする */
+            }
+            .nav-list {
+                flex-wrap: wrap; /* ナビを2行などにする */
+            }
+            .nav-list li {
+                flex-basis: 33.33%; /* 3つ折り */
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-right: 1px solid rgba(255,255,255,0.1);
+                box-sizing: border-box;
+            }
+             .nav-list li:nth-child(3n) {
+                border-right: none;
+            }
+            .hero {
+                height: 300px;
+            }
+            .hero-text {
+                 padding: 20px 30px;
+                 width: 80%;
+            }
+            .hero-text h2 {
+                font-size: 24px;
+            }
+            .principal-msg {
+                flex-direction: column; /* 校長挨拶を縦並び */
+                align-items: center;
+            }
+            .footer-inner {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <p>自主・協調・創造</p>
+                <h1>市立郡山学園牧中学校</h1>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">学校紹介</a></li>
+            <li><a href="#">学校生活</a></li>
+            <li><a href="#">入試・入学案内</a></li>
+            <li><a href="#">保護者の方へ</a></li>
+            <li><a href="#">アクセス</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>未来を拓く、豊かな心</h2>
+            <p>Municipal Koriyama Gakuen Maki J.H.S.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="main-content">
+            
+            <div class="emergency-box">
+                <span class="emergency-title">【重要】インフルエンザによる学級閉鎖について</span>
+                <p>2年3組は、インフルエンザの罹患生徒が増加したため、11月21日（金）〜11月23日（日）まで学級閉鎖といたします。</p>
+            </div>
+
+            <h2 class="section-title">新着情報・お知らせ</h2>
+            <ul class="news-list">
+                <li>
+                    <span class="news-date">2025.11.21</span>
+                    <span class="news-cat">お知らせ</span>
+                    <a href="#">令和7年度 新入生保護者説明会のご案内を掲載しました</a>
+                </li>
+                <li>
+                    <span class="news-date">2025.11.15</span>
+                    <span class="news-cat">部活動</span>
+                    <a href="#">サッカー部が県大会で準優勝しました！</a>
+                </li>
+                <li>
+                    <span class="news-date">2025.11.10</span>
+                    <span class="news-cat">学校行事</span>
+                    <a href="#">「牧中祭（文化祭）」の様子をフォトギャラリーにアップしました</a>
+                </li>
+                <li>
+                    <span class="news-date">2025.11.01</span>
+                    <span class="news-cat">保健室</span>
+                    <a href="#">11月の保健だよりを配布しました（PDF）</a>
+                </li>
+                <li>
+                    <span class="news-date">2025.10.25</span>
+                    <span class="news-cat">重要</span>
+                    <a href="#">冬季の登下校時の服装について（規定変更のお知らせ）</a>
+                </li>
+            </ul>
+
+            <div style="margin-top: 50px;">
+                <h2 class="section-title">校長挨拶</h2>
+                <div class="principal-msg">
+                    <img src="https://img.notionusercontent.com/s3/prod-files-secure%2Ffc617b10-e61f-435c-810a-fc7c1479605b%2F2325196e-d859-4554-9af9-74c23e9d2f9f%2F%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-06-26_21.32.35.png/size/w=480?exp=1763782079&sig=gkav1u9ZnimJ_BGyA60MG-zzP08f2JpuDHkPmMxO_vg&id=56b5b0f4-0575-4883-9a30-57f9e0e4f68d&table=block" alt="佐藤健一校長" class="principal-img">
+                    
+                    <div>
+                        <h3>「自ら考え、共に歩む生徒」を育成します</h3>
+                        <p>本校のホームページをご覧いただき、ありがとうございます。市立郡山学園牧中学校は、豊かな自然と地域の皆様の温かいご支援に支えられ、創立40周年を迎えました。</p>
+                        <p>これからの予測困難な時代を生き抜くため、確かな学力と豊かな人間性を兼ね備えた生徒の育成に努めてまいります。日々の教育活動へのご理解とご協力を賜りますようお願い申し上げます。</p>
+                        <div style="text-align: right; margin-top: 15px; font-weight: bold;">
+                            <span>校長　牧 稜平</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="#">🏫 学校要覧・沿革</a>
+                <a href="#">📅 年間行事予定</a>
+                <a href="#">🍱 今月の給食献立</a>
+                <a href="#">⚽ 部活動紹介</a>
+                <a href="#">📄 学校だより「牧」</a>
+                <a href="#">🚌 アクセスマップ</a>
+                <a href="#">📞 欠席・遅刻連絡フォーム</a>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop" alt="学校生活の様子" style="width:100%; border-radius:4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                
+                <a href="#" style="display:block; background: var(--primary-color); color:#fff; text-align:center; padding:10px; margin-top: -4px; border-radius: 0 0 4px 4px; font-weight:bold;">
+                    日々の生徒の様子（ブログ）へ ＞
+                </a>
+            </div>
+
+             <div style="margin-top: 20px; background:#fff; padding:15px; border-radius:4px;">
+                <h3 style="font-size:16px; border-bottom:2px solid var(--primary-color); padding-bottom:5px; margin-top:0;">関連リンク</h3>
+                <ul style="font-size:14px;">
+                    <li style="margin-bottom:8px;"><a href="#" style="color:var(--primary-color);">▶ 郡山学園教育委員会</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="color:var(--primary-color);">▶ ＆Nature</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="color:var(--primary-color);">▶ 市立牧小学校（連携校）</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-info">
+                <h3>市立郡山学園牧中学校</h3>
+                <p>〒xxx-xxxx<br>○○県郡山市牧○丁目○番○号</p>
+                <p>TEL: 024-xxx-xxxx <br> FAX: 024-xxx-xxxx</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">学校案内（PDF）</a></li>
+                    <li><a href="#">いじめ防止基本方針</a></li>
+                    <li><a href="#">部活動ガイドライン</a></li>
+                    <li><a href="#">サイトマップ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; Municipal Koriyama Gakuen Maki Junior High School. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
